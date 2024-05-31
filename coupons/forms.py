@@ -1,5 +1,5 @@
 from django import forms
-from coupons.models import Coupon
+from coupons.models import Coupon, Category
 
 
 class CouponSearchForm(forms.Form):
@@ -21,3 +21,11 @@ class CouponApplyForm(forms.ModelForm):
             field.error_messages = {
                 'required': f'{field.label} is required'
             }
+
+
+class BulkCouponGenerationForm(forms.Form):
+    category = forms.ModelChoiceField(queryset=Category.objects.all())
+    count = forms.IntegerField(min_value=1)
+    discount_amount = forms.DecimalField(max_digits=10, decimal_places=2)
+    valid_from = forms.DateTimeField(required=False, widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}))
+    valid_to = forms.DateTimeField(required=False, widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}))

@@ -1,0 +1,26 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrahead %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom_admin.css' %}">
+{% endblock extrahead %}
+
+{% block content %}
+<div id="content-main" class="content">
+    <h1>Generate Coupons in Bulk</h1>
+    <div class="module">
+        <form method="post" class="form-horizontal">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-row">
+                <button type="submit" class="button default">Generate Coupons</button>
+            </div>
+        </form>
+        {% for message in messages %}
+            <div class="messagelist">
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
