@@ -1,0 +1,33 @@
+{% if messages %}
+    {% for message in messages %}
+        <div class="d-flex justify-content-between mt-3 alert {{ message.tags }} " role="alert"
+             style="padding: 0.6rem;">
+            <span>{{ message }}</span>
+            <button style="font-size:0.9rem; " type="button" class="btn-close" data-bs-dismiss="alert"
+                    aria-label="Close"></button>
+        </div>
+    {% endfor %}
+    {% block scripts %}
+        <script>
+            let alertElements = document.querySelectorAll(".alert");
+
+            alertElements.forEach(function (alertElement) {
+                setTimeout(function () {
+                    alertElement.style.transition = "opacity 0.5s";
+                    alertElement.style.opacity = 0;
+
+                    setTimeout(function () {
+                        alertElement.remove();
+                    }, 500);
+                }, 4000);
+            });
+        </script>
+    {% endblock %}
+
+{% endif %}
+
+
+
+
+
+
