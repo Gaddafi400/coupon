@@ -2,25 +2,46 @@
 {% load static %}
 
 {% block extrahead %}
+    {{ super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/forms.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/widgets.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/changelists.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/dashboard.css' %}">
+    {# custom css #}
     <link rel="stylesheet" type="text/css" href="{% static 'css/custom_admin.css' %}">
 {% endblock extrahead %}
 
 {% block content %}
 <div id="content-main" class="content">
-    <h1>Generate Coupons in Bulk</h1>
+    <h1 class="heading">Generate Coupons in Bulk</h1>
     <div class="module">
         <form method="post" class="form-horizontal">
             {% csrf_token %}
-            {{ form.as_p }}
+            <fieldset class="module aligned">
+                {% for field in form %}
+                    <div class="form-row {% if field.errors %}errors{% endif %}">
+                        {{ field.errors }}
+                        <div>
+                            {{ field.label_tag }}
+                            {{ field }}
+                            {% if field.help_text %}
+                                <p class="help" style="margin: 0.2rem 0 0.2rem 0; padding: 0.2rem 0 0.2rem 0;">{{ field.help_text }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </fieldset>
             <div class="form-row">
-                <button type="submit" class="button default">Generate Coupons</button>
+                <button type="submit" class="button default" style="padding: 0.5rem">Generate Coupons</button>
             </div>
         </form>
-        {% for message in messages %}
-            <div class="messagelist">
-                <p>{{ message }}</p>
-            </div>
-        {% endfor %}
+        {% if messages %}
+            <ul class="messagelist">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

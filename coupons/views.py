@@ -10,7 +10,8 @@ from .forms import CouponSearchForm
 from django.contrib.admin.views.decorators import staff_member_required
 
 
-@staff_member_required
+# @staff_member_required
+# @login_required
 def search_coupon(request):
     coupon = None
     if request.method == 'POST':

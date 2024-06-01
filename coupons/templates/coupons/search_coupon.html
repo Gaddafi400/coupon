@@ -16,8 +16,9 @@
 
     {% if coupon %}
         <h4 class="mt-5">Coupon Details</h4>
-        <table class="table table-striped mt-3">
-            <thead>
+        <div class="table-responsive mt-3">
+            <table class="table table-striped">
+                <thead>
                 <tr>
                     <th scope="col">Code</th>
                     <th scope="col">Discount</th>
@@ -26,8 +27,8 @@
                     <th scope="col">Active</th>
                     <th scope="col">Actions</th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <tr>
                     <td>{{ coupon.code }}</td>
                     <td>{{ coupon.discount }}</td>
@@ -42,8 +43,10 @@
                         {% endif %}
                     </td>
                 </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     {% endif %}
+
 
 {% endblock content %}

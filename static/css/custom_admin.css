@@ -1,1 +1,53 @@
- 
+.heading{
+    padding: 0.8rem;
+}
+.custom-date-style {
+    padding: 0.5rem;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.8125rem;
+    color: #333;
+    background-color: #f9f9f9;
+    outline: none;
+}
+
+.custom-date-style:focus {
+    border-color: #ba2121;
+    background-color: #fff;
+}
+
+.help {
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+/*---------------------*/
+.errors {
+    color: #FF0000;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.messagelist {
+    list-style-type: none;
+    padding: 0;
+}
+
+.messagelist li {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.messagelist .error {
+    background-color: #F8D7DA;
+    color: #721C24;
+    border: 1px solid #F5C6CB;
+}
+
+.messagelist .success {
+    background-color: #D4EDDA;
+    color: #155724;
+    border: 1px solid #C3E6CB;
+}

@@ -7,3 +7,42 @@ body {
     font-weight: 400;
     font-style: normal;
 }
+
+button {
+    background-color: #417690 !important;
+    color: white;
+    border: 1px solid #2d4f63 !important;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #365f7a !important;
+}
+
+button:focus {
+    background-color: #2d4f63 !important;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(65, 118, 144, 0.5);
+}
+
+.navbar-brand span {
+    /*font-size: 1.5rem;*/
+    /*color: red;*/
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+}
+
+@media (max-width: 576px) {
+    nav {
+        /*padding-left: 0 !important;*/
+        /*padding-right: 0 !important;*/
+        /*background: red !important;*/
+    }
+    .navbar-brand span {
+        font-size: 1rem;
+    }
+}
