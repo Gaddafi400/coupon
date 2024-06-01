@@ -28,7 +28,7 @@ SECRET_KEY = "django-insecure-ppi27%%#z&hhpp5qwkdc#b@9@kn)58-xo5f$ci9+e3e5a!t1+9
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+CSRF_TRUSTED_ORIGINS = ['https://coupon-production.up.railway.app']
 # Application definition
 
 INSTALLED_APPS = [
@@ -63,9 +63,6 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
-]
 
 ROOT_URLCONF = "naco.urls"
 
