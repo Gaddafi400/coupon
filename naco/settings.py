@@ -27,7 +27,9 @@ SECRET_KEY = "django-insecure-ppi27%%#z&hhpp5qwkdc#b@9@kn)58-xo5f$ci9+e3e5a!t1+9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'https://coupon-production.up.railway.app/'
+]
 
 
 # Application definition
