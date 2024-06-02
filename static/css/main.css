@@ -27,6 +27,7 @@ button:focus {
     box-shadow: 0 0 0 2px rgba(65, 118, 144, 0.5);
 }
 
+
 .navbar-brand span {
     /*font-size: 1.5rem;*/
     /*color: red;*/
@@ -38,16 +39,38 @@ button:focus {
 
 @media (max-width: 576px) {
     nav {
-        /*padding-left: 0 !important;*/
-        /*padding-right: 0 !important;*/
-        /*background: red !important;*/
+        background: #fff !important;
     }
+
     .navbar-brand span {
         font-size: 1rem;
     }
+
     .nav-link {
         margin-top: 1rem;
         padding: 0.5rem;
+    }
+}
+
+
+
+.custom-navbar {
+    border-radius: 2px;
+    background-color: #f8f9fa !important;
+}
+
+
+@media (max-width: 800px) {
+    .custom-navbar {
+        background-color: #fff !important;
+    }
+
+    .custom-navbar .navbar-toggler-icon {
+        color: #fff;
+    }
+
+    .custom-navbar .nav-link {
+        color: #000;
     }
 }
 

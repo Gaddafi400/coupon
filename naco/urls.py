@@ -3,14 +3,16 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.models import Group
+from django.contrib.auth import views as auth_views
 
 from naco import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include('coupons.urls')),
-    path("", include('django.contrib.auth.urls')),
-    path('l/', views.user_logout_view, name='user_logout'),
+    path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
+    # Log user out to custom page
+    path('logout-user/', views.user_logout_view, name='user_logout'),
     path('user_logout_done/', views.user_logout_done, name='user_logout_done'),
 ]
 
