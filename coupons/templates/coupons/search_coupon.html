@@ -5,7 +5,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-    <h4 class="mb-4 mt-2">Search Coupon</h4>
+    <h4 class="mb-4 mt-2" style="color: darkgray">Search Coupon</h4>
     <form method="post" class="mt-3">
         {% csrf_token %}
         {{ form|crispy }}
@@ -15,7 +15,7 @@
     </form>
 
     {% if coupon %}
-        <h4 class="mt-5">Coupon Details</h4>
+        <h4 class="mt-5" style="color: darkgray">Coupon Details</h4>
         <div class="table-responsive mt-3">
             <table class="table table-striped">
                 <thead>

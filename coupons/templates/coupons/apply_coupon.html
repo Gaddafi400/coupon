@@ -5,7 +5,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-    <h1 class="mb-4">Apply Coupon</h1>
+    <h4 class="mb-4" style="color: darkgray">Apply Coupon</h4>
     <form method="post" class="mt-3">
         {% csrf_token %}
         {{ form|crispy }}
@@ -14,16 +14,16 @@
         </button>
     </form>
 
-{#    {% if form.errors %}#}
-{#        <div class="alert alert-danger mt-3">#}
-{#            <ul>#}
-{#                {% for field, errors in form.errors.items %}#}
-{#                    {% for error in errors %}#}
-{#                        <li>{{ error }}</li>#}
-{#                    {% endfor %}#}
-{#                {% endfor %}#}
-{#            </ul>#}
-{#        </div>#}
-{#    {% endif %}#}
+    {% if form.errors %}
+        <div class="alert alert-danger mt-3">
+            <ul>
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
 
 {% endblock content %}

@@ -19,7 +19,7 @@
         <a class="navbar-brand d-flex align-items-center"
            href="{% if user.is_authenticated %}{% url 'search_coupon' %}{% else %}#{% endif %}">
             <img src="{% static 'img/naco.png' %}" alt="Coupon Validator Logo" style="height: 40px; margin-right: 0;">
-            <span>Coupon Validator</span>
+            <span style="color: darkgray">Coupon Validator</span>
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
