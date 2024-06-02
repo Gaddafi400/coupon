@@ -1,5 +1,5 @@
+from django.conf import settings
 from django.db import models
-from django.contrib.auth.models import User
 
 
 class Category(models.Model):
@@ -30,9 +30,9 @@ class Coupon(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    created_by = models.ForeignKey(User, related_name='coupons_created', on_delete=models.SET_NULL, null=True,
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='coupons_created', on_delete=models.SET_NULL, null=True,
                                    blank=True)
-    updated_by = models.ForeignKey(User, related_name='coupons_updated', on_delete=models.SET_NULL, null=True,
+    updated_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='coupons_updated', on_delete=models.SET_NULL, null=True,
                                    blank=True)
 
     def save(self, *args, **kwargs):

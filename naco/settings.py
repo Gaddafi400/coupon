@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    'core',
     'coupons',
     "crispy_forms",
     "crispy_bootstrap5",
@@ -148,3 +149,5 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+AUTH_USER_MODEL = 'core.User'

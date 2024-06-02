@@ -16,10 +16,12 @@
 <div class="container">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
-        <a class="navbar-brand d-flex align-items-center" href="{% url 'search_coupon' %}">
+        <a class="navbar-brand d-flex align-items-center"
+           href="{% if user.is_authenticated %}{% url 'search_coupon' %}{% else %}#{% endif %}">
             <img src="{% static 'img/naco.png' %}" alt="Coupon Validator Logo" style="height: 40px; margin-right: 0;">
             <span>Coupon Validator</span>
         </a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon" style="color: #fff;"></span>
@@ -37,7 +39,7 @@
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        <a class="nav-link" style="font-size: large" href="{% url 'login' %}">Login</a>
                     </li>
                 {% endif %}
             </ul>
