@@ -4,33 +4,12 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.utils import timezone
 from datetime import timedelta
-from django.contrib.admin import SimpleListFilter
 import random
 import string
 
 from .exports_helper import export_coupons_csv, export_coupons_pdf
 from .models import Coupon, Category
 from .forms import BulkCouponGenerationForm
-
-
-# def export_coupons(modeladmin, request, queryset):
-#     """
-#     Export selected coupons to a CSV file, including only the coupon code and discount amount.
-#     """
-#     response = HttpResponse(content_type='text/csv')
-#     response['Content-Disposition'] = 'attachment; filename="coupons.csv"'
-#
-#     writer = csv.writer(response)
-#     writer.writerow(['Code', 'Discount Amount'])
-#
-#     for coupon in queryset:
-#         if coupon.active and coupon.valid_from <= timezone.now() <= coupon.valid_to:
-#             writer.writerow([coupon.code, coupon.discount])
-#
-#     return response
-#
-#
-# export_coupons.short_description = 'Export selected coupons to CSV'
 
 
 def generate_random_code(length=8):
@@ -50,7 +29,11 @@ def bulk_generate_coupons(request):
 
             coupons = []
             for _ in range(count):
-                code = generate_random_code()
+                # check and make sure each code is unique
+                while True:
+                    code = generate_random_code()
+                    if not Coupon.objects.filter(code=code).exists():
+                        break
                 coupons.append(Coupon(
                     code=code,
                     category=category,
@@ -60,8 +43,11 @@ def bulk_generate_coupons(request):
                     active=True
                 ))
 
-            Coupon.objects.bulk_create(coupons)
-            messages.success(request, f'Successfully generated {count} coupons')
+            try:
+                Coupon.objects.bulk_create(coupons)
+                messages.success(request, f'Successfully generated {count} coupons')
+            except Exception as e:
+                messages.error(request, f'An error occurred: {e}')
             return redirect('admin:coupons_coupon_changelist')
     else:
         form = BulkCouponGenerationForm()
