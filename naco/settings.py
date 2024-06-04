@@ -19,7 +19,7 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Load ENV variables
-env_path = load_dotenv(os.path.join(BASE_DIR, 'naco/.env'))
+env_path = load_dotenv(os.path.join(BASE_DIR, '.env'))
 load_dotenv(str(env_path))
 
 # Quick-start development settings - unsuitable for production
