@@ -26,11 +26,13 @@ load_dotenv(str(env_path))
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = str(os.environ.get('SECRET_KEY'))
+# SECRET_KEY = str(os.environ.get('SECRET_KEY'))
+SECRET_KEY = "django-insecure-_1fp-$d3whd_%ggxm55hlx+(_otfv)tlq#(ziybz+w=m24d&3^"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.getenv('DEBUG', 'False').lower() in ('true', '1', 't')
-DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 't')
+# DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 't')
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://coupon-production.up.railway.app']
